@@ -1,0 +1,12 @@
+#!/bin/bash
+
+LOGFILE="/var/log/nginx/access.log"  # Adjust this path for Apache or other logs
+
+echo "Number of 404 errors:"
+grep "404" $LOGFILE | wc -l
+
+echo "Top 10 most requested pages:"
+awk '{print $7}' $LOGFILE | sort | uniq -c | sort -rn | head -10
+
+echo "Top 10 IP addresses making requests:"
+awk '{print $1}' $LOGFILE | sort | uniq -c | sort -rn | head -10
