@@ -12,3 +12,9 @@ spec:
     - http01:
         ingress:
           class: nginx
+
+# Apply the above YAML files using kubectl:
+# kubectl apply -f cluster-issuer.yaml
+# kubectl apply -f deployment.yaml
+# kubectl apply -f service.yaml
+# kubectl apply -f ingress.yaml
