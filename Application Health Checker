@@ -1,0 +1,13 @@
+#!/bin/bash
+
+URL="http://yourapplication.com"
+
+STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}\n" $URL)
+
+if [ $STATUS_CODE -eq 200 ]; then
+    echo "Application is up. Status code: $STATUS_CODE"
+elif [ $STATUS_CODE -eq 301 ] || [ $STATUS_CODE -eq 302 ]; then
+    echo "Application is up but redirected. Status code: $STATUS_CODE"
+else
+    echo "Application is down or not responding. Status code: $STATUS_CODE"
+fi
